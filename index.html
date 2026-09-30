@@ -3,19 +3,297 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Garima Sahu — Research</title>
-  <style>
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center;
-           font-family: system-ui, sans-serif; background: #f7f5f0; color: #1d1d1b; }
-    main { text-align: center; padding: 24px; }
-    h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 8px; }
-    p { opacity: .6; margin: 0; }
-  </style>
+  <title>Garima Sahu — Pharmacognosy & Natural Products</title>
+  <meta name="description" content="Garima Sahu, Assistant Professor at United Institute of Pharmacy, Prayagraj. Research in pharmacognosy, natural products, diabetic wound healing and phytochemical therapeutics.">
+  <meta property="og:title" content="Garima Sahu — Pharmacognosy & Natural Products">
+  <meta property="og:description" content="Turning medicinal plants into evidence — research, publications and teaching.">
+  <meta name="theme-color" content="#f3f3f1">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e0e10'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' fill='%23fff' text-anchor='middle'%3Egs%3C/text%3E%3C/svg%3E">
+  <script>
+    (function () {
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- Preloader -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__bg"></div>
+    <div class="loader__inner">
+      <span class="loader__name">Garima Sahu</span>
+      <span class="loader__count"><span id="loaderCount">0</span>%</span>
+    </div>
+  </div>
+
+  <div class="cursor" aria-hidden="true"><span class="cursor__label">Read</span></div>
+
+  <!-- Navigation -->
+  <header class="nav">
+    <a class="logo" href="#top" aria-label="Garima Sahu — home">
+      <svg viewBox="0 0 48 40" aria-hidden="true"><path d="M22 6.5A15 15 0 1 0 22 33.5V20h-8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="square"/><path d="M44 10.5c-2-3-5-4.5-8.6-4.5-4.4 0-7.4 2.4-7.4 6 0 8.6 16 5.6 16 14.4 0 4-3.4 7.1-8.3 7.1-3.8 0-7-1.7-9-4.6" fill="none" stroke="currentColor" stroke-width="3.4"/></svg>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <div class="nav__right">
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5 8.6 8.6 0 1 0 20.5 14.6Z"/></svg>
+      </button>
+      <a class="btn btn--ink magnetic" href="#contact">Collaborate</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="menu" aria-hidden="true">
+    <div class="menu__bg"></div>
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="#about"><small>01</small>About</a>
+      <a href="#research"><small>02</small>Research</a>
+      <a href="#publications"><small>03</small>Publications</a>
+      <a href="#experience"><small>04</small>Experience</a>
+      <a href="#contact"><small>05</small>Contact</a>
+    </nav>
+  </div>
+
   <main>
-    <h1>Garima Sahu</h1>
-    <p>Website coming soon.</p>
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="blob blob--mint"></div>
+        <div class="blob blob--teal"></div>
+        <div class="blob blob--blue"></div>
+        <div class="blob blob--violet"></div>
+        <div class="blob blob--haze"></div>
+        <div class="grain"></div>
+      </div>
+
+      <div class="hero__intro">
+        <p class="reveal-up"><strong>Focus:</strong> Pharmacognosy &amp; Natural Products.</p>
+        <p class="reveal-up">Turning medicinal plants into evidence — from extracting and characterising phytochemicals to building bioinspired nanofiber scaffolds that help diabetic wounds heal.</p>
+        <p class="hero__meta reveal-up">Assistant Professor · United Institute of Pharmacy, Prayagraj</p>
+      </div>
+
+      <div class="hero__vertical reveal-fade">Extract, Formulate, Heal</div>
+
+      <a class="hero__scroll reveal-fade" href="#about" aria-label="Scroll to about">
+        <span>Scroll</span><i></i>
+      </a>
+
+      <h1 class="hero__name">
+        <span class="line"><span class="line__inner">Garima Sahu</span></span>
+      </h1>
+    </section>
+
+    <!-- About -->
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="label">(01) — About</div>
+        <p class="statement" data-split>
+          I study how plants heal — isolating, standardising and formulating natural products into therapies for diabetes, chronic wounds, inflammation and the nervous system.
+        </p>
+
+        <div class="about__grid">
+          <div class="about__text">
+            <p>Garima Sahu is an Assistant Professor at the <strong>United Institute of Pharmacy, Prayagraj</strong>, where she teaches pharmacognosy and leads research at the meeting point of phytochemistry and pharmaceutical technology.</p>
+            <p>Before Prayagraj she spent five years at the <strong>Bharat Institute of Technology, Meerut</strong>. Her recent work loads plant extracts into PLGA nanofiber scaffolds for diabetic wound healing, and maps how dietary polyphenols, flavonoids and propolis behave in the body.</p>
+            <div class="about__links">
+              <a class="chip" href="https://scholar.google.com/citations?user=YL_8bloAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+              <a class="chip" href="https://orcid.org/0000-0001-6913-7273" target="_blank" rel="noopener">ORCID ↗</a>
+              <a class="chip" href="https://www.linkedin.com/in/garima-sahu-a16772131" target="_blank" rel="noopener">LinkedIn ↗</a>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><span class="stat__num" data-count="8">0</span><span class="stat__plus">+</span><span class="stat__label">Years teaching pharmacy</span></div>
+            <div class="stat"><span class="stat__num" data-count="20">0</span><span class="stat__label">Indexed publications</span></div>
+            <div class="stat"><span class="stat__num" data-count="38">0</span><span class="stat__label">Citations on Google Scholar</span></div>
+            <div class="stat"><span class="stat__num" data-count="3">0</span><span class="stat__label">h-index</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Pharmacognosy</span><em>✳</em><span>Natural Products</span><em>✳</em><span>Phytochemistry</span><em>✳</em><span>Diabetic Wound Healing</span><em>✳</em><span>Nanofiber Scaffolds</span><em>✳</em><span>Polyphenols</span><em>✳</em><span>Neuropharmacology</span><em>✳</em>
+        <span>Pharmacognosy</span><em>✳</em><span>Natural Products</span><em>✳</em><span>Phytochemistry</span><em>✳</em><span>Diabetic Wound Healing</span><em>✳</em><span>Nanofiber Scaffolds</span><em>✳</em><span>Polyphenols</span><em>✳</em><span>Neuropharmacology</span><em>✳</em>
+      </div>
+    </div>
+
+    <!-- Research (horizontal slides) -->
+    <section class="research" id="research">
+      <div class="research__pin">
+        <div class="research__head container">
+          <div class="label">(02) — Research areas</div>
+          <h2 class="h2">Where the <em>work</em> lives</h2>
+          <p class="research__hint">Keep scrolling →</p>
+        </div>
+        <div class="research__track">
+          <article class="rcard">
+            <div class="rcard__art art-1"><span>01</span><div class="grain"></div></div>
+            <div class="rcard__body">
+              <h3>Natural products &amp; pharmacognosy</h3>
+              <p>Extraction, purification and characterisation of flavonoids and polyphenols, and how geography and botany shape propolis chemistry.</p>
+              <ul class="tags"><li>Flavonoids</li><li>Propolis</li><li>Standardisation</li></ul>
+            </div>
+          </article>
+          <article class="rcard">
+            <div class="rcard__art art-2"><span>02</span><div class="grain"></div></div>
+            <div class="rcard__body">
+              <h3>Diabetic wound healing</h3>
+              <p>Phytoextract-loaded, bioinspired PLGA nanofiber scaffolds that calm inflammation and oxidative stress, tested in vitro and in vivo.</p>
+              <ul class="tags"><li>PLGA nanofibers</li><li>Anti-inflammatory</li><li>In vivo</li></ul>
+            </div>
+          </article>
+          <article class="rcard">
+            <div class="rcard__art art-3"><span>03</span><div class="grain"></div></div>
+            <div class="rcard__body">
+              <h3>Metabolic &amp; endocrine disorders</h3>
+              <p>Plant extracts against type II diabetic complications, phytochemicals that modulate obesity, and emerging therapies for PCOS.</p>
+              <ul class="tags"><li>Type II diabetes</li><li>Obesity</li><li>PCOS</li></ul>
+            </div>
+          </article>
+          <article class="rcard">
+            <div class="rcard__art art-4"><span>04</span><div class="grain"></div></div>
+            <div class="rcard__body">
+              <h3>Herbal neuropharmacology</h3>
+              <p>How herbal drugs act on neurotransmitters in CNS disorders — her most-cited review, in the Indian Journal of Traditional Knowledge.</p>
+              <ul class="tags"><li>CNS</li><li>Neurotransmitters</li><li>Herbal drugs</li></ul>
+            </div>
+          </article>
+          <article class="rcard">
+            <div class="rcard__art art-5"><span>05</span><div class="grain"></div></div>
+            <div class="rcard__body">
+              <h3>Infection, gut &amp; cancer</h3>
+              <p>Reviews on convalescent plasma and SARS-CoV-2 pathogenesis, probiotics in cancer management, and polyphenol–drug interactions.</p>
+              <ul class="tags"><li>COVID-19</li><li>Probiotics</li><li>Drug metabolism</li></ul>
+            </div>
+          </article>
+          <article class="rcard">
+            <div class="rcard__art art-6"><span>06</span><div class="grain"></div></div>
+            <div class="rcard__body">
+              <h3>Food &amp; nutrition science</h3>
+              <p>Standards and labelling of ghee products, and the medicinal and nutritional value of <i>Centella asiatica</i> in human health.</p>
+              <ul class="tags"><li>Nutraceuticals</li><li>Food standards</li><li>Centella</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section class="pubs section" id="publications">
+      <div class="container">
+        <div class="pubs__head">
+          <div>
+            <div class="label">(03) — Publications</div>
+            <h2 class="h2">Selected <em>papers</em> &amp; chapters</h2>
+          </div>
+          <div class="chart" aria-label="Citations per year, from Google Scholar">
+            <div class="chart__title">Citations per year</div>
+            <div class="chart__bars" id="chartBars"></div>
+          </div>
+        </div>
+
+        <div class="filters" role="tablist" aria-label="Filter publications">
+          <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">All <sup></sup></button>
+          <button class="filter" data-filter="journal" role="tab" aria-selected="false">Research articles <sup></sup></button>
+          <button class="filter" data-filter="review" role="tab" aria-selected="false">Reviews <sup></sup></button>
+          <button class="filter" data-filter="chapter" role="tab" aria-selected="false">Book chapters <sup></sup></button>
+        </div>
+
+        <ol class="pub-list" id="pubList"></ol>
+
+        <a class="more-link" href="https://scholar.google.com/citations?user=YL_8bloAAAAJ&amp;hl=en" target="_blank" rel="noopener">Full list on Google Scholar <span>↗</span></a>
+      </div>
+    </section>
+
+    <!-- Experience (stacking slides) -->
+    <section class="exp section" id="experience">
+      <div class="container">
+        <div class="label">(04) — Experience</div>
+        <h2 class="h2">Eight years in the <em>classroom</em> &amp; the lab</h2>
+
+        <div class="exp__stack">
+          <article class="exp__card">
+            <div class="exp__years">2023 — Present</div>
+            <div class="exp__main">
+              <h3>Assistant Professor</h3>
+              <p class="exp__org">United Institute of Pharmacy · Prayagraj</p>
+              <p>Teaches pharmacognosy and natural-product chemistry to pharmacy students, and runs research on nanofiber wound dressings, polyphenols and metabolic disease.</p>
+            </div>
+            <div class="exp__art art-2"><div class="grain"></div></div>
+          </article>
+          <article class="exp__card">
+            <div class="exp__years">2018 — 2023</div>
+            <div class="exp__main">
+              <h3>Assistant Professor</h3>
+              <p class="exp__org">Bharat Institute of Technology · Meerut</p>
+              <p>Five years in the Department of Pharmacy teaching pharmacy undergraduates. Her first paper, a review of herbal drugs in CNS disorders, appeared in 2018 and is now her most-cited.</p>
+            </div>
+            <div class="exp__art art-4"><div class="grain"></div></div>
+          </article>
+          <article class="exp__card">
+            <div class="exp__years">2018 — Present</div>
+            <div class="exp__main">
+              <h3>Author &amp; collaborator</h3>
+              <p class="exp__org">Springer · Elsevier · CRC Press · Apple Academic Press</p>
+              <p>Author of book chapters and journal papers with research groups across India, on flavonoids, probiotics, nanofiber therapeutics, dairy standards and medicinal plants.</p>
+            </div>
+            <div class="exp__art art-5"><div class="grain"></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="contact__bg" aria-hidden="true">
+        <div class="blob blob--mint"></div>
+        <div class="blob blob--blue"></div>
+        <div class="blob blob--violet"></div>
+        <div class="grain"></div>
+      </div>
+      <div class="container contact__inner">
+        <div class="label">(05) — Contact</div>
+        <h2 class="contact__title" data-split-lines>
+          <span class="line"><span class="line__inner">Let’s find out</span></span>
+          <span class="line"><span class="line__inner">what <em>plants</em> can heal.</span></span>
+        </h2>
+        <p class="contact__sub">Open to research collaborations, book chapters, guest lectures and student projects in pharmacognosy and natural products.</p>
+        <div class="contact__links">
+          <a class="big-link" href="https://www.linkedin.com/in/garima-sahu-a16772131" target="_blank" rel="noopener"><span>LinkedIn</span><i>↗</i></a>
+          <a class="big-link" href="https://scholar.google.com/citations?user=YL_8bloAAAAJ&amp;hl=en" target="_blank" rel="noopener"><span>Google Scholar</span><i>↗</i></a>
+          <a class="big-link" href="https://orcid.org/0000-0001-6913-7273" target="_blank" rel="noopener"><span>ORCID</span><i>↗</i></a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Garima Sahu</span>
+      <span>United Institute of Pharmacy, Prayagraj</span>
+      <a href="#top" class="to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

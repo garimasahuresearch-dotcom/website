@@ -155,16 +155,42 @@
     });
   });
 
-  /* ---------- Preloader + hero intro ---------- */
+  /* ---------- Preloader: logo draws itself, then flies into the nav ---------- */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
   document.body.classList.add('is-loading');
+
+  var navMark = document.querySelector('.nav .mark');
+  var loaderLogo = document.querySelector('.loader__logo');
+  loaderLogo.appendChild(navMark.cloneNode(true));
+  var lMark = loaderLogo.querySelector('.mark');
+  var q = function (sel) { return lMark.querySelectorAll(sel); };
+
+  lMark.querySelectorAll('.lg-draw, .lg-shine').forEach(function (p) {
+    var len = p.getTotalLength();
+    gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
+  });
+  gsap.set(loaderLogo, { x: 0, y: 0, xPercent: -50, yPercent: -58, transformOrigin: '0 0' });
+  gsap.set(q('.lg-half'), { scaleX: 0, transformOrigin: '0% 50%' });
+  gsap.set(q('.lg-leaf--big'), { scale: 0.4, rotation: -30, transformOrigin: '100% 100%' });
+  gsap.set(q('.lg-leaf--small'), { scale: 0.4, rotation: 30, transformOrigin: '0% 100%' });
+  gsap.set(navMark, { opacity: 0 });
+  gsap.set('.nav__links, .nav__right, .logo__word', { opacity: 0, y: -16 });
   gsap.set('.hero__name .line__inner', { yPercent: 110 });
   gsap.set('.reveal-up', { y: 30, opacity: 0 });
   gsap.set('.reveal-fade', { opacity: 0 });
-  gsap.set('.nav', { y: -30, opacity: 0 });
   gsap.set('.hero__bg', { scale: 1.25 });
 
   var counter = { v: 0 };
   var countEl = document.getElementById('loaderCount');
+  var flip = null;
+  function measure() {
+    if (flip) return flip;
+    var from = lMark.getBoundingClientRect(), to = navMark.getBoundingClientRect();
+    flip = { x: to.left - from.left, y: to.top - from.top, s: to.width / from.width };
+    return flip;
+  }
+
   var intro = gsap.timeline({
     onComplete: function () {
       loader.classList.add('is-done');
@@ -173,14 +199,28 @@
     }
   });
   intro
-    .to(counter, { v: 100, duration: 1.6, ease: 'power2.inOut', onUpdate: function () { countEl.textContent = Math.round(counter.v); } })
-    .to('.loader__inner', { opacity: 0, y: -20, duration: 0.4, ease: 'power2.in' })
-    .to('.loader__bg', { scaleY: 0, duration: 1, ease: 'expo.inOut' }, '-=0.1')
-    .to('.hero__bg', { scale: 1, duration: 1.8, ease: 'expo.out' }, '-=0.7')
-    .to('.hero__name .line__inner', { yPercent: 0, duration: 1.4, ease: 'expo.out' }, '<0.1')
-    .to('.nav', { y: 0, opacity: 1, duration: 1, ease: 'expo.out' }, '<0.3')
-    .to('.reveal-up', { y: 0, opacity: 1, duration: 1, stagger: 0.08, ease: 'expo.out' }, '<0.1')
-    .to('.reveal-fade', { opacity: 1, duration: 1 }, '<0.3');
+    .to(counter, { v: 100, duration: 2.7, ease: 'power1.inOut', onUpdate: function () { countEl.textContent = Math.round(counter.v); } }, 0)
+    .to(q('.lg-capsule'), { strokeDashoffset: 0, duration: 1.3, ease: 'power2.inOut' }, 0.1)
+    .to(q('.lg-half'), { scaleX: 1, duration: 0.9, ease: 'expo.inOut' }, 0.9)
+    .to(q('.lg-shine'), { strokeDashoffset: 0, duration: 0.6, ease: 'power2.out' }, 1.6)
+    .to(q('.lg-stem'), { strokeDashoffset: 0, duration: 0.7, ease: 'power2.out' }, 1.0)
+    .to(q('.lg-leaf'), { scale: 1, rotation: 0, duration: 1.4, ease: 'elastic.out(1, 0.45)', stagger: 0.14 }, 1.45)
+    .to(q('.lg-leaf .lg-draw:not(.lg-vein)'), { strokeDashoffset: 0, duration: 0.9, ease: 'power2.out', stagger: 0.14 }, 1.45)
+    .to(q('.lg-vein'), { strokeDashoffset: 0, duration: 0.5, ease: 'power2.out', stagger: 0.1 }, 2.0)
+    .add('out', 3.0)
+    .to('.loader__inner', { opacity: 0, y: -20, duration: 0.4, ease: 'power2.in' }, 'out')
+    .to(loaderLogo, {
+      x: function () { return measure().x; }, y: function () { return measure().y; }, scale: function () { return measure().s; },
+      duration: 1.2, ease: 'expo.inOut'
+    }, 'out')
+    .to('.loader__bg', { yPercent: -100, duration: 1.2, ease: 'expo.inOut' }, 'out+=0.2')
+    .set(navMark, { opacity: 1 }, 'out+=1.2')
+    .set(loaderLogo, { opacity: 0 }, 'out+=1.2')
+    .to('.hero__bg', { scale: 1, duration: 1.8, ease: 'expo.out' }, 'out+=0.6')
+    .to('.hero__name .line__inner', { yPercent: 0, duration: 1.4, ease: 'expo.out' }, 'out+=0.75')
+    .to('.nav__links, .nav__right, .logo__word', { y: 0, opacity: 1, duration: 1, stagger: 0.06, ease: 'expo.out' }, 'out+=1')
+    .to('.reveal-up', { y: 0, opacity: 1, duration: 1, stagger: 0.08, ease: 'expo.out' }, 'out+=0.9')
+    .to('.reveal-fade', { opacity: 1, duration: 1 }, 'out+=1.2');
 
   /* ---------- Hero parallax ---------- */
   var heroTl = gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });

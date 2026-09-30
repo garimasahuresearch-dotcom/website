@@ -171,15 +171,11 @@
   var loaderLogo = document.querySelector('.loader__logo');
   loaderLogo.appendChild(navMark.cloneNode(true));
   var lMark = loaderLogo.querySelector('.mark');
-  var q = function (sel) { return lMark.querySelectorAll(sel); };
 
-  lMark.querySelectorAll('.lg-draw').forEach(function (p) {
-    var len = p.getTotalLength();
-    gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
-  });
+  var lPath = lMark.querySelector('.lg-fill');
+  var pathLen = lPath.getTotalLength();
+  gsap.set(lPath, { attr: { stroke: 'currentColor', 'stroke-width': 10 }, fillOpacity: 0, strokeDasharray: pathLen, strokeDashoffset: pathLen });
   gsap.set(loaderLogo, { x: 0, y: 0, xPercent: -50, yPercent: -50, transformOrigin: '0 0' });
-  var lGroup = lMark.querySelector('g');
-  gsap.set(lGroup, { attr: { 'stroke-width': 1.3 } });
   gsap.set(navMark, { opacity: 0 });
   gsap.set('.nav__links, .nav__right, .logo__word', { opacity: 0, y: -16 });
   gsap.set('.hero__name .line__inner', { yPercent: 110 });
@@ -206,18 +202,16 @@
   });
   intro
     .to(counter, { v: 100, duration: 2.7, ease: 'power1.inOut', onUpdate: function () { countEl.textContent = Math.round(counter.v); } }, 0)
-    .to(q('.lg-draw')[0], { strokeDashoffset: 0, duration: 1.1, ease: 'power3.inOut' }, 0.2)
-    .to(q('.lg-draw')[1], { strokeDashoffset: 0, duration: 0.6, ease: 'power3.out' }, 1.1)
-    .to(q('.lg-draw')[2], { strokeDashoffset: 0, duration: 0.45, ease: 'power2.out' }, 1.5)
-    .to(q('.lg-draw')[3], { strokeDashoffset: 0, duration: 0.9, ease: 'power3.inOut' }, 1.75)
-    .fromTo(lMark, { rotation: -6 }, { rotation: 0, duration: 2.6, ease: 'expo.out', transformOrigin: '50% 50%' }, 0.2)
+    .to(lPath, { strokeDashoffset: 0, duration: 2, ease: 'power2.inOut' }, 0.1)
+    .to(lPath, { fillOpacity: 1, duration: 0.9, ease: 'power2.out' }, 1.7)
+    .to(lPath, { attr: { 'stroke-width': 0 }, duration: 0.6, ease: 'power2.out' }, 2.2)
+    .fromTo(lMark, { scale: 0.86, rotation: -4 }, { scale: 1, rotation: 0, duration: 2.8, ease: 'expo.out', transformOrigin: '50% 50%' }, 0.1)
     .add('out', 3.0)
     .to('.loader__inner', { opacity: 0, y: -20, duration: 0.4, ease: 'power2.in' }, 'out')
     .to(loaderLogo, {
       x: function () { return measure().x; }, y: function () { return measure().y; }, scale: function () { return measure().s; },
       duration: 1.2, ease: 'expo.inOut'
     }, 'out')
-    .to(lGroup, { attr: { 'stroke-width': 2.4 }, duration: 1.2, ease: 'expo.inOut' }, 'out')
     .to('.loader__bg', { yPercent: -100, duration: 1.2, ease: 'expo.inOut' }, 'out+=0.2')
     .set(navMark, { opacity: 1 }, 'out+=1.2')
     .set(loaderLogo, { opacity: 0 }, 'out+=1.2')

@@ -16,6 +16,7 @@
   var form = root.querySelector('.chat__form');
   var input = root.querySelector('.chat__input');
   var closeBtn = root.querySelector('.chat__close');
+  var dismissBtn = root.querySelector('.chat__dismiss');
 
   var SCHOLAR = 'https://scholar.google.com/citations?user=YL_8bloAAAAJ&hl=en';
   var ORCID = 'https://orcid.org/0000-0001-6913-7273';
@@ -203,6 +204,7 @@
 
   var started = false;
   function open() {
+    root.classList.remove('is-dismissed');
     panel.hidden = false;
     root.classList.add('is-open');
     launcher.setAttribute('aria-expanded', 'true');
@@ -221,8 +223,20 @@
 
   launcher.addEventListener('click', function () { root.classList.contains('is-open') ? close() : open(); });
   closeBtn.addEventListener('click', close);
+
+  // Hide the launcher for this visit; the contact section's "Ask the site assistant" brings it back.
+  try { if (sessionStorage.getItem('chatDismissed')) root.classList.add('is-dismissed'); } catch (e) {}
+  dismissBtn.addEventListener('click', function () {
+    root.classList.add('is-dismissed');
+    try { sessionStorage.setItem('chatDismissed', '1'); } catch (e) {}
+  });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('is-open')) close(); });
-  document.querySelectorAll('[data-open-chat]').forEach(function (b) { b.addEventListener('click', open); });
+  document.querySelectorAll('[data-open-chat]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      try { sessionStorage.removeItem('chatDismissed'); } catch (e) {}
+      open();
+    });
+  });
 
   form.addEventListener('submit', function (e) { e.preventDefault(); ask(input.value); });
 

@@ -280,10 +280,42 @@
           <span class="line"><span class="line__inner">what <em>plants</em> can heal.</span></span>
         </h2>
         <p class="contact__sub">Open to research collaborations, book chapters, guest lectures and student projects in pharmacognosy and natural products.</p>
-        <div class="contact__links">
+
+        <div class="contact__grid">
+          <form class="cform" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+            <input type="hidden" name="form-name" value="contact">
+            <p class="cform__hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <div class="cform__row">
+              <label class="field"><span>Your name</span><input name="name" type="text" autocomplete="name" required></label>
+              <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+            </div>
+            <label class="field"><span>Institution / organisation <em>(optional)</em></span><input name="organisation" type="text" autocomplete="organization"></label>
+            <fieldset class="field field--pills">
+              <legend>I’m reaching out about</legend>
+              <div class="pills">
+                <label class="pill-opt"><input type="radio" name="topic" value="Research collaboration" checked><span>Research collaboration</span></label>
+                <label class="pill-opt"><input type="radio" name="topic" value="Book chapter / writing"><span>Book chapter / writing</span></label>
+                <label class="pill-opt"><input type="radio" name="topic" value="Guest lecture"><span>Guest lecture</span></label>
+                <label class="pill-opt"><input type="radio" name="topic" value="Student project"><span>Student project</span></label>
+                <label class="pill-opt"><input type="radio" name="topic" value="Something else"><span>Something else</span></label>
+              </div>
+            </fieldset>
+            <label class="field"><span>Message</span><textarea name="message" rows="5" required></textarea></label>
+            <div class="cform__foot">
+              <button class="btn btn--ink btn--lg magnetic" type="submit"><span class="cform__label">Send message</span><i aria-hidden="true">→</i></button>
+              <p class="cform__status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div class="contact__side">
+            <p class="contact__side-title">Or find her on</p>
+            <div class="contact__links">
           <a class="big-link" href="https://www.linkedin.com/in/garima-sahu-a16772131" target="_blank" rel="noopener"><span>LinkedIn</span><i>↗</i></a>
           <a class="big-link" href="https://scholar.google.com/citations?user=YL_8bloAAAAJ&amp;hl=en" target="_blank" rel="noopener"><span>Google Scholar</span><i>↗</i></a>
           <a class="big-link" href="https://orcid.org/0000-0001-6913-7273" target="_blank" rel="noopener"><span>ORCID</span><i>↗</i></a>
+        </div>
+            <button class="ask-link" type="button" data-open-chat><span>Ask the site assistant</span><i>✦</i></button>
+          </div>
         </div>
       </div>
     </section>
@@ -297,9 +329,34 @@
     </div>
   </footer>
 
+
+  <!-- Site assistant -->
+  <div class="chat" aria-live="polite">
+    <button class="chat__launcher" type="button" aria-expanded="false" aria-controls="chatPanel">
+      <span class="chat__launcher-dot"></span><span>Ask about Garima</span>
+    </button>
+    <section class="chat__panel" id="chatPanel" role="dialog" aria-label="Site assistant" hidden>
+      <header class="chat__head">
+        <div>
+          <strong>Site assistant</strong>
+          <small>Answers only from this website</small>
+        </div>
+        <button class="chat__close" type="button" aria-label="Close assistant">✕</button>
+      </header>
+      <div class="chat__log" data-lenis-prevent></div>
+      <div class="chat__pills"></div>
+      <form class="chat__form" autocomplete="off">
+        <input class="chat__input" type="text" placeholder="Ask about research, papers, contact…" aria-label="Your question" maxlength="200">
+        <button class="chat__send" type="submit" aria-label="Send">↑</button>
+      </form>
+    </section>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="main.js"></script>
+  <script src="chat.js"></script>
+  <script src="contact.js"></script>
 </body>
 </html>

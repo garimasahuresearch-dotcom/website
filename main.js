@@ -28,6 +28,7 @@
     { y: 2018, type: 'review', title: 'Role of herbal drugs on neurotransmitters for treating various CNS disorders: a review', authors: 'T Dubey, G Sahu, S Kumari, BS Yadav, AN Sahu', venue: 'Indian Journal of Traditional Knowledge 17 (1)', cites: 20 }
   ];
   var typeLabel = { journal: 'Research article', review: 'Review', chapter: 'Book chapter' };
+  window.GS_DATA = { pubs: pubs, citationsByYear: citationsByYear, typeLabel: typeLabel };
 
   /* ---------- Theme ---------- */
   function setTheme(t) {
@@ -120,6 +121,7 @@
   var lenis = null;
   if (typeof window.Lenis !== 'undefined') {
     lenis = new Lenis({ duration: 1.15, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
+    window.GS_LENIS = lenis;
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
     gsap.ticker.lagSmoothing(0);

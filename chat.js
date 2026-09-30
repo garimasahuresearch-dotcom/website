@@ -95,19 +95,19 @@
 
     { id: 'education', w: 2, keys: ['education', 'phd', 'ph.d', 'degree', 'qualification', 'qualified', 'm.pharm', 'mpharm', 'b.pharm', 'bpharm', 'studied', 'university'],
       answer: function () {
-        return 'Her education details aren’t listed on this website yet, so I can’t answer that reliably. You could ask her directly using the ' + go('#contact', 'contact form') + '.';
+        return 'Her education details aren’t listed on this website yet, so I can’t answer that reliably. You could ask her directly using the ' + '<a href="#contact" data-open-contact>contact form</a>' + '.';
       },
       pills: ['Teaching experience', 'Research areas', 'Contact'] },
 
     { id: 'collab', w: 2, keys: ['collaborate', 'collaboration', 'work with', 'lecture', 'guest', 'student', 'project', 'supervise', 'invite', 'hire', 'consult', 'partner'],
       answer: function () {
-        return 'Garima is open to <b>research collaborations, book chapters, guest lectures and student projects</b> in pharmacognosy and natural products. The quickest way is the ' + go('#contact', 'contact form') + '. Pick a topic and leave a short note.';
+        return 'Garima is open to <b>research collaborations, book chapters, guest lectures and student projects</b> in pharmacognosy and natural products. The quickest way is the ' + '<a href="#contact" data-open-contact>contact form</a>' + '. Pick a topic and leave a short note.';
       },
       pills: ['Contact', 'Research areas', 'Profiles'] },
 
     { id: 'contact', w: 2, keys: ['contact', 'email', 'mail', 'reach', 'message', 'connect', 'get in touch', 'phone', 'number', 'call', 'whatsapp'],
       answer: function () {
-        return 'You can reach her through the ' + go('#contact', 'contact form on this page') + ' or on ' + link(LINKEDIN, 'LinkedIn ↗') + '. The site doesn’t list a public phone number or email address.';
+        return 'You can reach her through the ' + '<a href="#contact" data-open-contact>contact form</a>' + ' or on ' + link(LINKEDIN, 'LinkedIn ↗') + '. The site doesn’t list a public phone number or email address.';
       },
       pills: ['How to collaborate', 'Profiles', 'Who is Garima?'] },
 
@@ -206,6 +206,7 @@
   function open() {
     root.classList.remove('is-dismissed');
     panel.hidden = false;
+    panel.offsetWidth; // commit display before the transition starts
     root.classList.add('is-open');
     launcher.setAttribute('aria-expanded', 'true');
     if (!started) {
@@ -224,7 +225,7 @@
   launcher.addEventListener('click', function () { root.classList.contains('is-open') ? close() : open(); });
   closeBtn.addEventListener('click', close);
 
-  // Hide the launcher for this visit; the contact section's "Ask the site assistant" brings it back.
+  // Hide the launcher for the rest of this visit.
   try { if (sessionStorage.getItem('chatDismissed')) root.classList.add('is-dismissed'); } catch (e) {}
   dismissBtn.addEventListener('click', function () {
     root.classList.add('is-dismissed');

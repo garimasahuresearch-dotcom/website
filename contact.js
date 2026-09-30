@@ -1,10 +1,48 @@
 (function () {
   'use strict';
 
-  // Netlify Forms: the static form is detected at deploy time; we post it with fetch
-  // so the visitor stays on the page.
+  /* ---------- Popup ---------- */
+  var modal = document.getElementById('contactModal');
   var form = document.querySelector('.cform');
-  if (!form) return;
+  if (!modal || !form) return;
+  var lastFocus = null;
+
+  function openModal() {
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    modal.offsetWidth; // commit display before the transition starts
+    modal.classList.add('is-open');
+    document.documentElement.classList.add('modal-open');
+    if (window.GS_LENIS) window.GS_LENIS.stop();
+    setTimeout(function () { form.elements.name.focus({ preventScroll: true }); }, 350);
+  }
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.documentElement.classList.remove('modal-open');
+    if (window.GS_LENIS) window.GS_LENIS.start();
+    setTimeout(function () { if (!modal.classList.contains('is-open')) modal.hidden = true; }, 450);
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+
+  // Delegated, so links inside chat answers open it too.
+  document.addEventListener('click', function (e) {
+    var opener = e.target.closest('[data-open-contact]');
+    if (opener) { e.preventDefault(); openModal(); return; }
+    if (e.target.closest('[data-close-contact]')) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (modal.hidden) return;
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key !== 'Tab') return;
+    var f = modal.querySelectorAll('button, input:not([type=hidden]):not([tabindex="-1"]), textarea, [href]');
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  /* ---------- Form ----------
+     Netlify Forms detects the static form at deploy time; we post it with fetch
+     so the visitor stays on the page. */
   var status = form.querySelector('.cform__status');
   var button = form.querySelector('button[type="submit"]');
   var label = form.querySelector('.cform__label');

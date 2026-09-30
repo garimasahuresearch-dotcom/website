@@ -125,7 +125,7 @@
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
     gsap.ticker.lagSmoothing(0);
-    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    document.querySelectorAll('a[href^="#"]:not([data-open-contact])').forEach(function (a) {
       a.addEventListener('click', function (e) {
         var id = a.getAttribute('href');
         var target = id === '#top' ? 0 : document.querySelector(id);
@@ -325,6 +325,9 @@
   gsap.to('.contact__bg .blob--mint', { y: -140, ease: 'none', scrollTrigger: { trigger: '.contact', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   /* ---------- Cursor + magnetic ---------- */
+  var hideCursor = function () { gsap.to('.cursor', { scale: 0, opacity: 0, duration: 0.2 }); };
+  window.addEventListener('wheel', hideCursor, { passive: true });
+  window.addEventListener('scroll', hideCursor, { passive: true });
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     var cursor = document.querySelector('.cursor');
     var cx = gsap.quickTo(cursor, 'x', { duration: 0.5, ease: 'power3.out' });

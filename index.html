@@ -11,6 +11,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/logo-light.png">
   <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     (function () {
       var t;
       try { t = localStorage.getItem('theme'); } catch (e) {}
@@ -40,20 +41,12 @@
   <!-- Navigation -->
   <header class="nav">
     <a class="logo" href="#top" aria-label="Garima Sahu — home">
-      <svg class="mark" viewBox="0 0 200 124" aria-hidden="true">
-        <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-          <path class="lg-draw lg-capsule" d="M100 62 H161 A25 25 0 0 1 161 112 H39 A25 25 0 0 1 39 62 H100"/>
-          <path class="lg-half" d="M100 62 H39 A25 25 0 0 0 39 112 H100 Z" fill="currentColor"/>
-          <path class="lg-shine" d="M31 93 A12 12 0 0 0 43 101 H84" stroke-width="4.5"/>
-          <path class="lg-draw lg-stem" d="M100 112 V78 C100 68 98 60 95 53"/>
-          <g class="lg-leaf lg-leaf--big">
-            <path class="lg-draw" d="M95 53 C70 53 55 37 57 11 C82 11 99 28 95 53 Z"/>
-            <path class="lg-draw lg-vein" d="M91 47 C83 38 74 29 66 21" stroke-width="4.5"/>
-          </g>
-          <g class="lg-leaf lg-leaf--small">
-            <path class="lg-draw" d="M98 55 C101 38 117 28 143 28 C141 47 125 59 98 55 Z"/>
-            <path class="lg-draw lg-vein" d="M104 50 C113 44 121 39 130 35" stroke-width="4.5"/>
-          </g>
+      <svg class="mark" viewBox="-1.5 4 52 52" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path class="lg-draw" d="M27.5 15.3 A17 17 0 1 0 27.5 44.7"/>
+          <path class="lg-draw" d="M18.5 31.5 H33.5"/>
+          <path class="lg-draw" d="M37.8 13.8 Q41.4 15.2 43.6 19.6"/>
+          <path class="lg-draw" d="M41.5 28 C46.2 31 47.2 38 44.2 43 C41.2 48 34.4 48.2 32 42.2"/>
         </g>
       </svg>
       <span class="logo__word">Garima Sahu</span>
